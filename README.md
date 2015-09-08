@@ -26,7 +26,7 @@ dependencies {
 
 ### Functions
 
-There is a simple initialization step which occurs in your Application class:
+There is a simple initialization step which occurs in your Application class:  
 **Simple**
 ```java
 public class MyApplication extends Application {
