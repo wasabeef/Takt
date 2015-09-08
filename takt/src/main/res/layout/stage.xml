@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/takt_fps"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:shadowColor="#7000"
+  android:shadowDx="6"
+  android:shadowDy="6"
+  android:shadowRadius="4"
+  android:textColor="@android:color/white"
+  />
