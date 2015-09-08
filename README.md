@@ -4,7 +4,7 @@
 
 <p align="center">
   <img src="art/takt.png" width="30%">
-</p
+</p>
 
 Screenshot
 ---
