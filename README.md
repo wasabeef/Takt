@@ -58,10 +58,30 @@ Takt.stock(this)
     .listener(new Audience() {
       @Override public void heartbeat(double fps) {
         Log.d("Excellent!", fps + " fps");
+
+        // Logcat
+        // jp.wasabeef.example.takt D/Excellent!﹕ 59.28853754940712 fps
+        // jp.wasabeef.example.takt D/Excellent!﹕ 59.523809523809526 fps
+        // jp.wasabeef.example.takt D/Excellent!﹕ 59.05511811023622 fps
+        // jp.wasabeef.example.takt D/Excellent!﹕ 55.33596837944664 fps
+        // jp.wasabeef.example.takt D/Excellent!﹕ 59.523809523809526 fps
       }
     })
     .play();
 }
+```
+
+**Hide fps label**
+
+```java
+Takt.stock(this)
+    .hide()
+    .listener(new Audience() {
+      @Override public void heartbeat(double fps) {
+        Log.d("Excellent!", fps + " fps");
+      }
+    })
+    .play();
 ```
 
 Requirements
