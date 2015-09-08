@@ -72,6 +72,29 @@ Takt.stock(this)
 }
 ```
 
+**Position**
+
+```java
+Takt.stock(this)
+    .seat(Seat.RIGHT_CENTER)
+    .play();
+
+    /**
+     * TOP_RIGHT,
+     * TOP_LEFT,
+     * TOP_CENTER,
+
+     * CENTER,
+     * RIGHT_CENTER,
+     * LEFT_CENTER,
+
+     * BOTTOM_RIGHT,
+     * BOTTOM_LEFT,
+     * BOTTOM_CENTER
+     */
+
+```
+
 **Hide fps label**
 
 ```java

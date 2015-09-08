@@ -130,16 +130,31 @@ public class Takt {
     public Program seat(Seat seat) {
       switch (seat) {
         case TOP_RIGHT:
-          params.gravity = Gravity.END | Gravity.TOP;
-          break;
-        case BOTTOM_RIGHT:
-          params.gravity = Gravity.END | Gravity.BOTTOM;
+          params.gravity = Gravity.TOP | Gravity.END;
           break;
         case TOP_LEFT:
-          params.gravity = Gravity.START | Gravity.TOP;
+          params.gravity = Gravity.TOP | Gravity.START;
+          break;
+        case TOP_CENTER:
+          params.gravity = Gravity.TOP | Gravity.CENTER_HORIZONTAL;
+          break;
+        case CENTER:
+          params.gravity = Gravity.CENTER;
+          break;
+        case RIGHT_CENTER:
+          params.gravity = Gravity.RIGHT | Gravity.CENTER_VERTICAL;
+          break;
+        case LEFT_CENTER:
+          params.gravity = Gravity.LEFT | Gravity.CENTER_VERTICAL;
+          break;
+        case BOTTOM_RIGHT:
+          params.gravity = Gravity.BOTTOM | Gravity.END;
           break;
         case BOTTOM_LEFT:
-          params.gravity = Gravity.START | Gravity.BOTTOM;
+          params.gravity = Gravity.BOTTOM | Gravity.START;
+          break;
+        case BOTTOM_CENTER:
+          params.gravity = Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL;
           break;
       }
       return this;

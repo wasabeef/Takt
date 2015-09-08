@@ -18,7 +18,14 @@ package jp.wasabeef.takt;
 
 public enum Seat {
   TOP_RIGHT,
-  BOTTOM_RIGHT,
   TOP_LEFT,
-  BOTTOM_LEFT
+  TOP_CENTER,
+
+  CENTER,
+  RIGHT_CENTER,
+  LEFT_CENTER,
+
+  BOTTOM_RIGHT,
+  BOTTOM_LEFT,
+  BOTTOM_CENTER
 }
