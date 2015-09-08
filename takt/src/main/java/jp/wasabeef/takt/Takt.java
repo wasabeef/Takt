@@ -112,8 +112,8 @@ public class Takt {
       return this;
     }
 
-    public Program interval(int interval) {
-      metronome.setInterval(interval);
+    public Program interval(int ms) {
+      metronome.setInterval(ms);
       return this;
     }
 
