@@ -2,9 +2,9 @@
 
 `Takt` is `Android` libraries for measuring the `FPS`.  
 
-<p style="text-align: center">
-  <img src="art/takt.png" width="30%" style="">
-</p>
+<p align="center">
+  <img src="art/takt.png" width="30%">
+</p
 
 Screenshot
 ---
