@@ -142,10 +142,10 @@ public class Takt {
           params.gravity = Gravity.CENTER;
           break;
         case RIGHT_CENTER:
-          params.gravity = Gravity.RIGHT | Gravity.CENTER_VERTICAL;
+          params.gravity = Gravity.END | Gravity.CENTER_VERTICAL;
           break;
         case LEFT_CENTER:
-          params.gravity = Gravity.LEFT | Gravity.CENTER_VERTICAL;
+          params.gravity = Gravity.START | Gravity.CENTER_VERTICAL;
           break;
         case BOTTOM_RIGHT:
           params.gravity = Gravity.BOTTOM | Gravity.END;
