@@ -33,6 +33,11 @@ public class MyApplication extends Application {
     super.onCreate();
     Takt.stock(this).play();
   }
+
+  @Override public void onTerminate() {
+    Takt.finish();
+    super.onTerminate();
+  }
 }
 ```
 

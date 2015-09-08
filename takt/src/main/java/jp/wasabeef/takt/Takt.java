@@ -1,5 +1,6 @@
 package jp.wasabeef.takt;
 
+import android.app.Application;
 import android.content.Context;
 import android.graphics.PixelFormat;
 import android.view.Gravity;
@@ -29,17 +30,21 @@ import java.text.DecimalFormat;
 
 public class Takt {
 
+  private static Program program = new Program();
+
   private Takt() {
   }
 
-  public static Program stock(Context context) {
-    return new Program(context);
+  public static Program stock(Application application) {
+    return program.prepare(application);
+  }
+
+  public static void finish() {
+    program.stop();
   }
 
   public static class Program {
-
     private Metronome metronome;
-
     private boolean show = true;
 
     private WindowManager wm;
@@ -49,10 +54,12 @@ public class Takt {
 
     private DecimalFormat dec = new DecimalFormat("#.0' fps'");
 
-    private Program(Context context) {
-      metronome = new Metronome();
-      Context appContext = context.getApplicationContext();
+    public Program() {
+    }
 
+    private Program prepare(Application application) {
+
+      metronome = new Metronome();
       params = new LayoutParams();
       params.width = LayoutParams.WRAP_CONTENT;
       params.height = LayoutParams.WRAP_CONTENT;
@@ -63,10 +70,20 @@ public class Takt {
       params.gravity = Gravity.END | Gravity.TOP;
       params.x = 10;
 
-      wm = (WindowManager) appContext.getSystemService(Context.WINDOW_SERVICE);
-      LayoutInflater inflater = LayoutInflater.from(appContext);
-      stageView = inflater.inflate(R.layout.stage, new RelativeLayout(appContext));
+      wm = WindowManager.class.cast(application.getSystemService(Context.WINDOW_SERVICE));
+      LayoutInflater inflater = LayoutInflater.from(application);
+      stageView = inflater.inflate(R.layout.stage, new RelativeLayout(application));
       fpsText = (TextView) stageView.findViewById(R.id.takt_fps);
+
+      listener(new Audience() {
+        @Override public void heartbeat(double fps) {
+          if (fpsText != null) {
+            fpsText.setText(dec.format(fps));
+          }
+        }
+      });
+
+      return this;
     }
 
     public void play() {
@@ -74,14 +91,6 @@ public class Takt {
 
       if (show) {
         wm.addView(stageView, params);
-
-        listener(new Audience() {
-          @Override public void heartbeat(double fps) {
-            if (fpsText != null) {
-              fpsText.setText(dec.format(fps));
-            }
-          }
-        });
       }
     }
 

@@ -28,7 +28,7 @@ public class SampleApplication extends Application {
   @Override public void onCreate() {
     super.onCreate();
     Takt.stock(this)
-        .seat(Seat.BOTTOM_RIGHT)
+        .seat(Seat.TOP_RIGHT)
         .interval(250)
         .color(Color.WHITE)
         .size(14f)
@@ -41,6 +41,7 @@ public class SampleApplication extends Application {
   }
 
   @Override public void onTerminate() {
+    Takt.finish();
     super.onTerminate();
   }
 }
