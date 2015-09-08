@@ -45,11 +45,11 @@ public class MyApplication extends Application {
 
 **Options**
 
-- `Takt.seat(seat)` is a position
-- `Takt.interval(time)` is a interval
-- `Takt.color(color)` is a text color.
-- `Takt.size(size)` is a text size
-- `Takt.listener(audience)` is a Listener
+- `seat(Seat seat)` is a position
+- `interval(int ms)` is a interval
+- `color(int color)` is a text color.
+- `size(int size)` is a text size
+- `listener(Audience audience)` is a Listener
 
 ```java
 Takt.stock(this)
@@ -84,11 +84,11 @@ Takt.stock(this)
      * TOP_RIGHT,
      * TOP_LEFT,
      * TOP_CENTER,
-
+     * 
      * CENTER,
      * RIGHT_CENTER,
      * LEFT_CENTER,
-
+     * 
      * BOTTOM_RIGHT,
      * BOTTOM_LEFT,
      * BOTTOM_CENTER
