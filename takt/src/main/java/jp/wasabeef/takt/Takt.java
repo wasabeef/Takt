@@ -3,7 +3,6 @@ package jp.wasabeef.takt;
 import android.app.Application;
 import android.content.Context;
 import android.graphics.PixelFormat;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
@@ -46,6 +45,7 @@ public class Takt {
   public static class Program {
     private Metronome metronome;
     private boolean show = true;
+    private boolean isPLaying = false;
 
     private WindowManager wm;
     private View stageView;
@@ -67,7 +67,7 @@ public class Takt {
       params.flags = LayoutParams.FLAG_KEEP_SCREEN_ON | LayoutParams.FLAG_NOT_FOCUSABLE
           | LayoutParams.FLAG_NOT_TOUCH_MODAL;
       params.format = PixelFormat.TRANSLUCENT;
-      params.gravity = Gravity.BOTTOM | Gravity.END;
+      params.gravity = Seat.BOTTOM_RIGHT.getGravity();
       params.x = 10;
 
       wm = WindowManager.class.cast(application.getSystemService(Context.WINDOW_SERVICE));
@@ -89,8 +89,9 @@ public class Takt {
     public void play() {
       metronome.start();
 
-      if (show) {
+      if (show && !isPLaying) {
         wm.addView(stageView, params);
+        isPLaying = true;
       }
     }
 
@@ -99,6 +100,7 @@ public class Takt {
 
       if (show && stageView != null) {
         wm.removeView(stageView);
+        isPLaying = false;
       }
     }
 
@@ -136,35 +138,7 @@ public class Takt {
     }
 
     public Program seat(Seat seat) {
-      switch (seat) {
-        case TOP_RIGHT:
-          params.gravity = Gravity.TOP | Gravity.END;
-          break;
-        case TOP_LEFT:
-          params.gravity = Gravity.TOP | Gravity.START;
-          break;
-        case TOP_CENTER:
-          params.gravity = Gravity.TOP | Gravity.CENTER_HORIZONTAL;
-          break;
-        case CENTER:
-          params.gravity = Gravity.CENTER;
-          break;
-        case RIGHT_CENTER:
-          params.gravity = Gravity.END | Gravity.CENTER_VERTICAL;
-          break;
-        case LEFT_CENTER:
-          params.gravity = Gravity.START | Gravity.CENTER_VERTICAL;
-          break;
-        case BOTTOM_RIGHT:
-          params.gravity = Gravity.BOTTOM | Gravity.END;
-          break;
-        case BOTTOM_LEFT:
-          params.gravity = Gravity.BOTTOM | Gravity.START;
-          break;
-        case BOTTOM_CENTER:
-          params.gravity = Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL;
-          break;
-      }
+      params.gravity = seat.getGravity();
       return this;
     }
   }

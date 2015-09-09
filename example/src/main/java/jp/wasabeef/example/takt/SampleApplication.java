@@ -32,6 +32,7 @@ public class SampleApplication extends Application {
         .interval(250)
         .color(Color.WHITE)
         .size(14f)
+        .alpha(.5f)
         .listener(new Audience() {
           @Override public void heartbeat(double fps) {
             Log.d("Excellent!", fps + " fps");
