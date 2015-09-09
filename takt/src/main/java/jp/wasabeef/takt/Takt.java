@@ -115,7 +115,7 @@ public class Takt {
     /*
      * alpha from = 0.0, to = 1.0
      */
-    public Program alpha(int alpha) {
+    public Program alpha(float alpha) {
       fpsText.setAlpha(alpha);
       return this;
     }
