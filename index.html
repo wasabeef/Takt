@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Takt : Takt is Android library for measuring the FPS using Choreographer.">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Takt</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/wasabeef/Takt">View on GitHub</a>
+
+          <h1 id="project_title">Takt</h1>
+          <h2 id="project_tagline">Takt is Android library for measuring the FPS using Choreographer.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/wasabeef/Takt/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/wasabeef/Takt/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p><a href="https://www.apache.org/licenses/LICENSE-2.0"><img src="https://img.shields.io/badge/license-Apache%202-blue.svg" alt="License"></a>
+<a href="https://bintray.com/wasabeef/maven/takt/_latestVersion"> <img src="https://api.bintray.com/packages/wasabeef/maven/takt/images/download.svg" alt="Download"> </a></p>
+
+<p><code>Tact</code> is <code>Android</code> library for measuring the <code>FPS</code> using <code>Choreographer</code>.  </p>
+
+<p align="center">
+  <img src="https://github.com/wasabeef/Takt/raw/master/art/takt.png" width="30%">
+</p>
+
+<h2>
+<a id="screenshot" class="anchor" href="#screenshot" aria-hidden="true"><span class="octicon octicon-link"></span></a>Screenshot</h2>
+
+<p><img src="https://github.com/wasabeef/Takt/raw/master/art/takt.gif" width="50%"></p>
+
+<h2>
+<a id="how-do-i-use-it" class="anchor" href="#how-do-i-use-it" aria-hidden="true"><span class="octicon octicon-link"></span></a>How do I use it?</h2>
+
+<h3>
+<a id="setup" class="anchor" href="#setup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Setup</h3>
+
+<h5>
+<a id="dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dependencies</h5>
+
+<div class="highlight highlight-groovy"><pre>dependencies {
+    compile <span class="pl-s"><span class="pl-pds">'</span>jp.wasabeef:takt:1.0.0<span class="pl-pds">'</span></span>
+}</pre></div>
+
+<h3>
+<a id="functions" class="anchor" href="#functions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Functions</h3>
+
+<p>There is a simple initialization step which occurs in your Application class:<br>
+<strong>Simple</strong></p>
+
+<div class="highlight highlight-java"><pre><span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">MyApplication</span> <span class="pl-k">extends</span> <span class="pl-e">Application</span> {
+  <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onCreate</span>() {
+    <span class="pl-v">super</span><span class="pl-k">.</span>onCreate();
+    <span class="pl-smi">Takt</span><span class="pl-k">.</span>stock(<span class="pl-v">this</span>)<span class="pl-k">.</span>play();
+  }
+
+  <span class="pl-k">@Override</span> <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onTerminate</span>() {
+    <span class="pl-smi">Takt</span><span class="pl-k">.</span>finish();
+    <span class="pl-v">super</span><span class="pl-k">.</span>onTerminate();
+  }
+}</pre></div>
+
+<p><strong>Options</strong></p>
+
+<ul>
+<li>
+<code>seat(Seat seat)</code> is a position</li>
+<li>
+<code>interval(int ms)</code> is a interval</li>
+<li>
+<code>color(int color)</code> is a text color.</li>
+<li>
+<code>size(int size)</code> is a text size</li>
+<li>
+<code>listener(Audience audience)</code> is a Listener</li>
+</ul>
+
+<div class="highlight highlight-java"><pre><span class="pl-smi">Takt</span><span class="pl-k">.</span>stock(<span class="pl-v">this</span>)
+    .seat(<span class="pl-smi">Seat</span><span class="pl-c1"><span class="pl-k">.</span>BOTTOM_RIGHT</span>)
+    .interval(<span class="pl-c1">250</span>)
+    .color(<span class="pl-smi">Color</span><span class="pl-c1"><span class="pl-k">.</span>WHITE</span>)
+    .size(<span class="pl-c1">14f</span>)
+    .listener(<span class="pl-k">new</span> <span class="pl-smi">Audience</span>() {
+      <span class="pl-k">@Override</span> <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">heartbeat</span>(<span class="pl-k">double</span> <span class="pl-v">fps</span>) {
+        <span class="pl-smi">Log</span><span class="pl-k">.</span>d(<span class="pl-s"><span class="pl-pds">"</span>Excellent!<span class="pl-pds">"</span></span>, fps <span class="pl-k">+</span> <span class="pl-s"><span class="pl-pds">"</span> fps<span class="pl-pds">"</span></span>);
+
+        <span class="pl-c">// Logcat</span>
+        <span class="pl-c">// jp.wasabeef.example.takt D/Excellent!﹕ 59.28853754940712 fps</span>
+        <span class="pl-c">// jp.wasabeef.example.takt D/Excellent!﹕ 59.523809523809526 fps</span>
+        <span class="pl-c">// jp.wasabeef.example.takt D/Excellent!﹕ 59.05511811023622 fps</span>
+        <span class="pl-c">// jp.wasabeef.example.takt D/Excellent!﹕ 55.33596837944664 fps</span>
+        <span class="pl-c">// jp.wasabeef.example.takt D/Excellent!﹕ 59.523809523809526 fps</span>
+      }
+    })
+    .play();
+}</pre></div>
+
+<p><strong>Position</strong></p>
+
+<div class="highlight highlight-java"><pre><span class="pl-smi">Takt</span><span class="pl-k">.</span>stock(<span class="pl-v">this</span>)
+    .seat(<span class="pl-smi">Seat</span><span class="pl-c1"><span class="pl-k">.</span>RIGHT_CENTER</span>)
+    .play();
+
+    <span class="pl-c">/**</span>
+<span class="pl-c">     * TOP_RIGHT,</span>
+<span class="pl-c">     * TOP_LEFT,</span>
+<span class="pl-c">     * TOP_CENTER,</span>
+<span class="pl-c">     * </span>
+<span class="pl-c">     * CENTER,</span>
+<span class="pl-c">     * RIGHT_CENTER,</span>
+<span class="pl-c">     * LEFT_CENTER,</span>
+<span class="pl-c">     * </span>
+<span class="pl-c">     * BOTTOM_RIGHT,</span>
+<span class="pl-c">     * BOTTOM_LEFT,</span>
+<span class="pl-c">     * BOTTOM_CENTER</span>
+<span class="pl-c">     */</span>
+</pre></div>
+
+<p><strong>Hide fps label</strong></p>
+
+<div class="highlight highlight-java"><pre><span class="pl-smi">Takt</span><span class="pl-k">.</span>stock(<span class="pl-v">this</span>)
+    .hide()
+    .listener(<span class="pl-k">new</span> <span class="pl-smi">Audience</span>() {
+      <span class="pl-k">@Override</span> <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">heartbeat</span>(<span class="pl-k">double</span> <span class="pl-v">fps</span>) {
+        <span class="pl-smi">Log</span><span class="pl-k">.</span>d(<span class="pl-s"><span class="pl-pds">"</span>Excellent!<span class="pl-pds">"</span></span>, fps <span class="pl-k">+</span> <span class="pl-s"><span class="pl-pds">"</span> fps<span class="pl-pds">"</span></span>);
+      }
+    })
+    .play();</pre></div>
+
+<h2>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements</h2>
+
+<p>Android 4.1+ (using the <a href="http://developer.android.com/intl/ja/reference/android/view/Choreographer.html"><code>Choreographer</code></a>)</p>
+
+<h2>
+<a id="developed-by" class="anchor" href="#developed-by" aria-hidden="true"><span class="octicon octicon-link"></span></a>Developed By</h2>
+
+<p>Daichi Furiya (Wasabeef) - <a href="mailto:dadadada.chop@gmail.com">dadadada.chop@gmail.com</a></p>
+
+<p><a href="https://twitter.com/wasabeef_jp">
+<img alt="Follow me on Twitter" src="https://raw.githubusercontent.com/wasabeef/art/master/twitter.png" width="75">
+</a></p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<pre><code>Copyright 2015 Wasabeef
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+</code></pre>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Takt maintained by <a href="https://github.com/wasabeef">wasabeef</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
