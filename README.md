@@ -49,6 +49,7 @@ public class MyApplication extends Application {
 - `interval(int ms)` is a interval
 - `color(int color)` is a text color.
 - `size(int size)` is a text size
+- `alpha(float alpha)` is a text alpha
 - `listener(Audience audience)` is a Listener
 
 ```java
@@ -57,6 +58,7 @@ Takt.stock(this)
     .interval(250)
     .color(Color.WHITE)
     .size(14f)
+    .alpha(.5f)
     .listener(new Audience() {
       @Override public void heartbeat(double fps) {
         Log.d("Excellent!", fps + " fps");
@@ -84,11 +86,11 @@ Takt.stock(this)
      * TOP_RIGHT,
      * TOP_LEFT,
      * TOP_CENTER,
-     * 
+     *
      * CENTER,
      * RIGHT_CENTER,
      * LEFT_CENTER,
-     * 
+     *
      * BOTTOM_RIGHT,
      * BOTTOM_LEFT,
      * BOTTOM_CENTER
