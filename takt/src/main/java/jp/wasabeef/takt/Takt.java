@@ -30,7 +30,7 @@ import java.text.DecimalFormat;
 
 public class Takt {
 
-  private static Program program = new Program();
+  private final static Program program = new Program();
 
   private Takt() {
   }
@@ -52,7 +52,7 @@ public class Takt {
     private TextView fpsText;
     private LayoutParams params;
 
-    private DecimalFormat dec = new DecimalFormat("#.0' fps'");
+    private final DecimalFormat decimal = new DecimalFormat("#.0' fps'");
 
     public Program() {
     }
@@ -67,7 +67,7 @@ public class Takt {
       params.flags = LayoutParams.FLAG_KEEP_SCREEN_ON | LayoutParams.FLAG_NOT_FOCUSABLE
           | LayoutParams.FLAG_NOT_TOUCH_MODAL;
       params.format = PixelFormat.TRANSLUCENT;
-      params.gravity = Gravity.END | Gravity.TOP;
+      params.gravity = Gravity.BOTTOM | Gravity.END;
       params.x = 10;
 
       wm = WindowManager.class.cast(application.getSystemService(Context.WINDOW_SERVICE));
@@ -78,7 +78,7 @@ public class Takt {
       listener(new Audience() {
         @Override public void heartbeat(double fps) {
           if (fpsText != null) {
-            fpsText.setText(dec.format(fps));
+            fpsText.setText(decimal.format(fps));
           }
         }
       });
@@ -97,7 +97,7 @@ public class Takt {
     public void stop() {
       metronome.stop();
 
-      if (show) {
+      if (show && stageView != null) {
         wm.removeView(stageView);
       }
     }
@@ -109,6 +109,14 @@ public class Takt {
 
     public Program size(float size) {
       fpsText.setTextSize(size);
+      return this;
+    }
+
+    /*
+     * alpha from = 0.0, to = 1.0
+     */
+    public Program alpha(int alpha) {
+      fpsText.setAlpha(alpha);
       return this;
     }
 

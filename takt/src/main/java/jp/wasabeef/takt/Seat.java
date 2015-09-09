@@ -21,9 +21,9 @@ public enum Seat {
   TOP_LEFT,
   TOP_CENTER,
 
-  CENTER,
   RIGHT_CENTER,
   LEFT_CENTER,
+  CENTER,
 
   BOTTOM_RIGHT,
   BOTTOM_LEFT,
