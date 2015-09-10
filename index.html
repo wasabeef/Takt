@@ -34,7 +34,7 @@
         <p><a href="https://www.apache.org/licenses/LICENSE-2.0"><img src="https://img.shields.io/badge/license-Apache%202-blue.svg" alt="License"></a>
 <a href="https://bintray.com/wasabeef/maven/takt/_latestVersion"> <img src="https://api.bintray.com/packages/wasabeef/maven/takt/images/download.svg" alt="Download"> </a></p>
 
-<p><code>Tact</code> is <code>Android</code> library for measuring the <code>FPS</code> using <code>Choreographer</code>.  </p>
+<p><code>Tact</code> is <code>Android</code> library for measuring the <code>FPS</code> using <a href="http://developer.android.com/intl/ja/reference/android/view/Choreographer.html"><code>Choreographer</code></a>.  </p>
 
 <p align="center">
   <img src="https://github.com/wasabeef/Takt/raw/master/art/takt.png" width="30%">
@@ -55,7 +55,7 @@
 <a id="dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dependencies</h5>
 
 <div class="highlight highlight-groovy"><pre>dependencies {
-    compile <span class="pl-s"><span class="pl-pds">'</span>jp.wasabeef:takt:1.0.0<span class="pl-pds">'</span></span>
+    compile <span class="pl-s"><span class="pl-pds">'</span>jp.wasabeef:takt:1.0.2<span class="pl-pds">'</span></span>
 }</pre></div>
 
 <h3>
@@ -88,6 +88,8 @@
 <li>
 <code>size(int size)</code> is a text size</li>
 <li>
+<code>alpha(float alpha)</code> is a text alpha</li>
+<li>
 <code>listener(Audience audience)</code> is a Listener</li>
 </ul>
 
@@ -96,6 +98,7 @@
     .interval(<span class="pl-c1">250</span>)
     .color(<span class="pl-smi">Color</span><span class="pl-c1"><span class="pl-k">.</span>WHITE</span>)
     .size(<span class="pl-c1">14f</span>)
+    .alpha(<span class="pl-c1">.5f</span>)
     .listener(<span class="pl-k">new</span> <span class="pl-smi">Audience</span>() {
       <span class="pl-k">@Override</span> <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">heartbeat</span>(<span class="pl-k">double</span> <span class="pl-v">fps</span>) {
         <span class="pl-smi">Log</span><span class="pl-k">.</span>d(<span class="pl-s"><span class="pl-pds">"</span>Excellent!<span class="pl-pds">"</span></span>, fps <span class="pl-k">+</span> <span class="pl-s"><span class="pl-pds">"</span> fps<span class="pl-pds">"</span></span>);
@@ -121,11 +124,11 @@
 <span class="pl-c">     * TOP_RIGHT,</span>
 <span class="pl-c">     * TOP_LEFT,</span>
 <span class="pl-c">     * TOP_CENTER,</span>
-<span class="pl-c">     * </span>
+<span class="pl-c">     *</span>
 <span class="pl-c">     * CENTER,</span>
 <span class="pl-c">     * RIGHT_CENTER,</span>
 <span class="pl-c">     * LEFT_CENTER,</span>
-<span class="pl-c">     * </span>
+<span class="pl-c">     *</span>
 <span class="pl-c">     * BOTTOM_RIGHT,</span>
 <span class="pl-c">     * BOTTOM_LEFT,</span>
 <span class="pl-c">     * BOTTOM_CENTER</span>
