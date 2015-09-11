@@ -1,3 +1,4 @@
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-takt-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/2468)
 [![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 [ ![Download](https://api.bintray.com/packages/wasabeef/maven/takt/images/download.svg) ](https://bintray.com/wasabeef/maven/takt/_latestVersion)
 
