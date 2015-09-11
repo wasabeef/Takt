@@ -45,7 +45,7 @@ public class Takt {
   public static class Program {
     private Metronome metronome;
     private boolean show = true;
-    private boolean isPLaying = false;
+    private boolean isPlaying = false;
 
     private WindowManager wm;
     private View stageView;
@@ -89,9 +89,9 @@ public class Takt {
     public void play() {
       metronome.start();
 
-      if (show && !isPLaying) {
+      if (show && !isPlaying) {
         wm.addView(stageView, params);
-        isPLaying = true;
+        isPlaying = true;
       }
     }
 
@@ -100,7 +100,7 @@ public class Takt {
 
       if (show && stageView != null) {
         wm.removeView(stageView);
-        isPLaying = false;
+        isPlaying = false;
       }
     }
 
