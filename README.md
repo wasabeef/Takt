@@ -4,9 +4,7 @@
 
 `Takt` is `Android` library for measuring the `FPS` using [`Choreographer`](http://developer.android.com/intl/ja/reference/android/view/Choreographer.html).  
 
-<p align="center">
-  <img src="art/takt.png" width="30%">
-</p>
+![Takt](art/takt.png)
 
 Screenshot
 ---
