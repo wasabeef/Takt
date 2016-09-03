@@ -1,52 +1,30 @@
-apply plugin: 'maven-publish'
-apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.novoda.bintray-release'
 
-group = GROUP
-version = VERSION_NAME
-
-task generateSourcesJar(type: Jar) {
-  from android.sourceSets.main.java.srcDirs
-  classifier 'sources'
-}
-
-task generateJavadocs(type: Javadoc) {
+task androidJavadocs(type: Javadoc) {
   source = android.sourceSets.main.java.srcDirs
   classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
 }
 
-task generateJavadocsJar(type: Jar) {
-  from generateJavadocs.destinationDir
-  classifier 'javadoc'
+task androidJavadocsJar(type: Jar, dependsOn: androidJavadocs) {
+  classifier = 'javadoc'
+  from androidJavadocs.destinationDir
 }
 
-generateJavadocsJar.dependsOn generateJavadocs
+task androidSourcesJar(type: Jar) {
+  classifier = 'sources'
+  from android.sourceSets.main.java.srcDirs
+}
 
 artifacts {
-  archives generateJavadocsJar
-  archives generateSourcesJar
+  archives androidSourcesJar
+  archives androidJavadocsJar
 }
 
-bintray {
-  user = getProperty("BINTRAY_USER")
-  key = getProperty("BINTRAY_KEY")
-
-  pkg {
-    repo = 'maven'
-    name = ARTIFACT_ID
-    licenses = ['Apache-2.0']
-    labels = ['android']
-    vcsUrl = POM_SCM_URL
-    websiteUrl = POM_URL
-
-    version {
-      name = VERSION_NAME
-      desc = POM_DESCRIPTION
-      released  = new Date()
-      vcsTag = VERSION_NAME
-    }
-    publish = false
-    publicDownloadNumbers = true
-  }
-  configurations = ['archives']
+publish {
+  userOrg = POM_DEVELOPER_ID
+  groupId = GROUP
+  artifactId = ARTIFACT_ID
+  publishVersion = VERSION_NAME
+  desc = POM_DESCRIPTION
+  website = POM_URL
 }
-
