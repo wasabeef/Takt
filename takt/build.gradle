@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
   compileSdkVersion COMPILE_SDK_VERSION as int
@@ -12,4 +13,14 @@ android {
   }
 }
 
-apply from: 'bintray-publish.gradle'
+publish {
+  userOrg = POM_DEVELOPER_ID
+  groupId = GROUP
+  artifactId = ARTIFACT_ID
+  publishVersion = VERSION_NAME
+  desc = POM_DESCRIPTION
+  website = POM_URL
+  bintrayUser = BINTRAY_USER
+  bintrayKey = BINTRAY_API_KEY
+  autoPublish = false
+}
