@@ -2,7 +2,12 @@ package jp.wasabeef.takt;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.PixelFormat;
+import android.net.Uri;
+import android.os.Build;
+import android.provider.Settings;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
@@ -46,7 +51,9 @@ public class Takt {
     private Metronome metronome;
     private boolean show = true;
     private boolean isPlaying = false;
+    private boolean showSetting = false;
 
+    private Application app;
     private WindowManager wm;
     private View stageView;
     private TextView fpsText;
@@ -58,22 +65,26 @@ public class Takt {
     }
 
     private Program prepare(Application application) {
-
       metronome = new Metronome();
       params = new LayoutParams();
       params.width = LayoutParams.WRAP_CONTENT;
       params.height = LayoutParams.WRAP_CONTENT;
-      params.type = LayoutParams.TYPE_TOAST;
+      if (isOverlayApiDeprecated()) {
+        params.type = LayoutParams.TYPE_APPLICATION_OVERLAY;
+      } else {
+        params.type = LayoutParams.TYPE_TOAST;
+      }
       params.flags = LayoutParams.FLAG_KEEP_SCREEN_ON | LayoutParams.FLAG_NOT_FOCUSABLE
           | LayoutParams.FLAG_NOT_TOUCH_MODAL;
       params.format = PixelFormat.TRANSLUCENT;
       params.gravity = Seat.BOTTOM_RIGHT.getGravity();
       params.x = 10;
 
+      app = application;
       wm = WindowManager.class.cast(application.getSystemService(Context.WINDOW_SERVICE));
-      LayoutInflater inflater = LayoutInflater.from(application);
-      stageView = inflater.inflate(R.layout.stage, new RelativeLayout(application));
-      fpsText = (TextView) stageView.findViewById(R.id.takt_fps);
+      LayoutInflater inflater = LayoutInflater.from(app);
+      stageView = inflater.inflate(R.layout.stage, new RelativeLayout(app));
+      fpsText = stageView.findViewById(R.id.takt_fps);
 
       listener(new Audience() {
         @Override public void heartbeat(double fps) {
@@ -87,6 +98,15 @@ public class Takt {
     }
 
     public void play() {
+      if (!hasOverlayPermission()) {
+        if (showSetting) {
+          startOverlaySettingActivity();
+        } else {
+          Log.w("takt", "Application has no Overlay permission");
+        }
+        return;
+      }
+
       metronome.start();
 
       if (show && !isPlaying) {
@@ -140,6 +160,30 @@ public class Takt {
     public Program seat(Seat seat) {
       params.gravity = seat.getGravity();
       return this;
+    }
+
+    public Program showOverlaySetting(boolean enable) {
+      showSetting = enable;
+      return this;
+    }
+
+    private boolean isOverlayApiDeprecated() {
+      return Build.VERSION.SDK_INT >= 26 /* FIXME: Android8.0 */;
+    }
+
+    private boolean hasOverlayPermission() {
+      if (!isOverlayApiDeprecated()) {
+        return true; // permission no required
+      } else {
+        return Settings.canDrawOverlays(app);
+      }
+    }
+
+    private void startOverlaySettingActivity() {
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        app.startActivity(new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+            Uri.parse("package:" + app.getPackageName())));
+      }
     }
   }
 }

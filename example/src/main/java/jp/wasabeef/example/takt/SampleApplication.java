@@ -38,6 +38,7 @@ public class SampleApplication extends Application {
             Log.d("Excellent!", fps + " fps");
           }
         })
+        .showOverlaySetting(true)
         .play();
   }
 
