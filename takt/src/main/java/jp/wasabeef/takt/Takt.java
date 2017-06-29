@@ -172,11 +172,7 @@ public class Takt {
     }
 
     private boolean hasOverlayPermission() {
-      if (!isOverlayApiDeprecated()) {
-        return true; // permission no required
-      } else {
-        return Settings.canDrawOverlays(app);
-      }
+      return Build.VERSION.SDK_INT < 23 || Settings.canDrawOverlays(app);
     }
 
     private void startOverlaySettingActivity() {
