@@ -178,7 +178,7 @@ public class Takt {
     private void startOverlaySettingActivity() {
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
         app.startActivity(new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
-            Uri.parse("package:" + app.getPackageName())));
+            Uri.parse("package:" + app.getPackageName())).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
       }
     }
   }
