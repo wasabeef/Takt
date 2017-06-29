@@ -1,6 +1,18 @@
 Change Log
 ==========
 
+Version 1.0.5 *(2017-06-28)*
+----------------------------
+
+Update:  
+- Compile & Target SDK Version 25 -> 26
+- Build Tools 25.0.2 -> 26.0.0-rc2
+- Support Library 25.3.0 -> 25.4.0
+
+Fix:  
+- Use TYPE_APPLICATION_OVERLAY on Android 8.0 (O)
+
+
 Version 1.0.4 *(2017-03-21)*
 ----------------------------
 
