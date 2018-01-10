@@ -75,7 +75,7 @@ public class Takt {
         params.type = LayoutParams.TYPE_TOAST;
       }
       params.flags = LayoutParams.FLAG_KEEP_SCREEN_ON | LayoutParams.FLAG_NOT_FOCUSABLE
-          | LayoutParams.FLAG_NOT_TOUCH_MODAL;
+          | LayoutParams.FLAG_NOT_TOUCH_MODAL | LayoutParams.FLAG_NOT_TOUCHABLE;
       params.format = PixelFormat.TRANSLUCENT;
       params.gravity = Seat.BOTTOM_RIGHT.getGravity();
       params.x = 10;
