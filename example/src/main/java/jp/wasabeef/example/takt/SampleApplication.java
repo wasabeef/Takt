@@ -38,11 +38,6 @@ public class SampleApplication extends Application {
             Log.d("Excellent!", fps + " fps");
           }
         })
-        .play();
-  }
-
-  @Override public void onTerminate() {
-    Takt.finish();
-    super.onTerminate();
+        .useCustomControl();
   }
 }

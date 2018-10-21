@@ -14,6 +14,7 @@ import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import java.text.DecimalFormat;
 
 /**
@@ -32,7 +33,7 @@ import java.text.DecimalFormat;
  * limitations under the License.
  */
 
-public class Takt {
+public class Takt  {
 
   private final static Program program = new Program();
 
@@ -43,15 +44,20 @@ public class Takt {
     return program.prepare(application);
   }
 
+  public static void play() {
+    program.play();
+  }
+
   public static void finish() {
     program.stop();
   }
 
-  public static class Program {
+  public static class Program implements LifecycleListener.LifecycleCallbackListener {
     private Metronome metronome;
     private boolean show = true;
     private boolean isPlaying = false;
     private boolean showSetting = true;
+    private boolean customControl = false;
 
     private Application app;
     private WindowManager wm;
@@ -69,6 +75,8 @@ public class Takt {
       params = new LayoutParams();
       params.width = LayoutParams.WRAP_CONTENT;
       params.height = LayoutParams.WRAP_CONTENT;
+      application.registerActivityLifecycleCallbacks(new LifecycleListener(this));
+
       if (isOverlayApiDeprecated()) {
         params.type = LayoutParams.TYPE_APPLICATION_OVERLAY;
       } else {
@@ -95,6 +103,16 @@ public class Takt {
       });
 
       return this;
+    }
+
+    @Override
+    public void onAppForeground() {
+      if (!customControl) play();
+    }
+
+    @Override
+    public void onAppBackground() {
+      if (!customControl) stop();
     }
 
     public void play() {
@@ -131,6 +149,11 @@ public class Takt {
 
     public Program size(float size) {
       fpsText.setTextSize(size);
+      return this;
+    }
+
+    public Program useCustomControl() {
+      customControl = true;
       return this;
     }
 
