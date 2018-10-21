@@ -32,12 +32,7 @@ There is a simple initialization step which occurs in your Application class:
 public class MyApplication extends Application {
   public void onCreate() {
     super.onCreate();
-    Takt.stock(this).play();
-  }
-
-  @Override public void onTerminate() {
-    Takt.finish();
-    super.onTerminate();
+    Takt.stock(this);
   }
 }
 ```
@@ -50,6 +45,8 @@ public class MyApplication extends Application {
 - `size(int size)` is a text size
 - `alpha(float alpha)` is a text alpha
 - `listener(Audience audience)` is a Listener
+- `useCustomControl` to manually start/stop Takt (disabled by default)
+- `showOverlaySetting` to enable/disable showing system overlay setting (enabled by default)
 
 ```java
 Takt.stock(this)
@@ -69,8 +66,7 @@ Takt.stock(this)
         // jp.wasabeef.example.takt D/Excellent!﹕ 55.33596837944664 fps
         // jp.wasabeef.example.takt D/Excellent!﹕ 59.523809523809526 fps
       }
-    })
-    .play();
+    });
 }
 ```
 
@@ -78,8 +74,7 @@ Takt.stock(this)
 
 ```java
 Takt.stock(this)
-    .seat(Seat.RIGHT_CENTER)
-    .play();
+    .seat(Seat.RIGHT_CENTER);
 
     /**
      * TOP_RIGHT,
@@ -106,8 +101,7 @@ Takt.stock(this)
       @Override public void heartbeat(double fps) {
         Log.d("Excellent!", fps + " fps");
       }
-    })
-    .play();
+    });
 ```
 
 Requirements
