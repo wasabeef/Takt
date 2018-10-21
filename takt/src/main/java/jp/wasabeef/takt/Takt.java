@@ -51,7 +51,7 @@ public class Takt {
     private Metronome metronome;
     private boolean show = true;
     private boolean isPlaying = false;
-    private boolean showSetting = false;
+    private boolean showSetting = true;
 
     private Application app;
     private WindowManager wm;
