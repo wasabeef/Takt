@@ -1,24 +1,34 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 android {
   compileSdkVersion COMPILE_SDK_VERSION as int
-  buildToolsVersion BUILD_TOOLS_VERSION
 
   defaultConfig {
     minSdkVersion MIN_SDK_VERSION as int
     targetSdkVersion TARGET_SDK_VERSION as int
-    versionCode VERSION_CODE as int
+    versionCode "git rev-list origin/master --count".execute().text.toInteger()
     versionName VERSION_NAME
   }
+
   buildTypes {
+    debug {
+      debuggable true
+      zipAlignEnabled true
+    }
     release {
-      minifyEnabled false
+      debuggable false
+      zipAlignEnabled true
+      minifyEnabled true
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+      shrinkResources true
     }
   }
 }
 
 dependencies {
-  compile project(':takt')
-  compile "com.android.support:appcompat-v7:${SUPPORT_PACKAGE_VERSION}"
+  implementation project(':takt')
+  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+  implementation "androidx.appcompat:appcompat:1.0.2"
 }
