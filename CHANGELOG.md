@@ -1,6 +1,13 @@
 Change Log
 ==========
 
+Version 2.0.0 *(2018-11-19)*
+----------------------------
+
+Update:
+- Migrate to AndroidX
+- Remove novoda-bintray-plugin
+
 Version 1.0.5 *(2017-06-28)*
 ----------------------------
 
