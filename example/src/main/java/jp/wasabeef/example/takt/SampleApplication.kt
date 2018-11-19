@@ -1,14 +1,13 @@
-package jp.wasabeef.example.takt;
+package jp.wasabeef.example.takt
 
-import android.app.Application;
-import android.graphics.Color;
-import android.util.Log;
-import jp.wasabeef.takt.Audience;
-import jp.wasabeef.takt.Seat;
-import jp.wasabeef.takt.Takt;
+import android.app.Application
+import android.graphics.Color
+import android.util.Log
+import jp.wasabeef.takt.Seat
+import jp.wasabeef.takt.Takt
 
 /**
- * Copyright (C) 2017 Wasabeef
+ * Copyright (C) 2018 Wasabeef
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,21 +22,17 @@ import jp.wasabeef.takt.Takt;
  * limitations under the License.
  */
 
-public class SampleApplication extends Application {
+class SampleApplication : Application() {
 
-  @Override public void onCreate() {
-    super.onCreate();
+  override fun onCreate() {
+    super.onCreate()
     Takt.stock(this)
         .seat(Seat.TOP_RIGHT)
         .interval(250)
         .color(Color.WHITE)
-        .size(14f)
+        .size(24f)
         .alpha(.5f)
-        .listener(new Audience() {
-          @Override public void heartbeat(double fps) {
-            Log.d("Excellent!", fps + " fps");
-          }
-        })
-        .useCustomControl();
+        .listener { fps -> Log.d("Excellent!", fps.toString() + " fps") }
+        .useCustomControl()
   }
 }

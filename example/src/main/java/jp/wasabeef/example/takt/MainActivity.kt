@@ -1,12 +1,12 @@
-package jp.wasabeef.example.takt;
+package jp.wasabeef.example.takt
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle
 
-import jp.wasabeef.takt.Takt;
+import androidx.appcompat.app.AppCompatActivity
+import jp.wasabeef.takt.Takt
 
 /**
- * Copyright (C) 2017 Wasabeef
+ * Copyright (C) 2018 Wasabeef
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,22 +21,20 @@ import jp.wasabeef.takt.Takt;
  * limitations under the License.
  */
 
-public class MainActivity extends AppCompatActivity {
+class MainActivity : AppCompatActivity() {
 
-  @Override protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_main);
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    setContentView(R.layout.activity_main)
   }
 
-  @Override
-  protected void onStart() {
-    super.onStart();
-    Takt.play();
+  override fun onStart() {
+    super.onStart()
+    Takt.play()
   }
 
-  @Override
-  protected void onStop() {
-    super.onStop();
-    Takt.finish();
+  override fun onStop() {
+    super.onStop()
+    Takt.finish()
   }
 }
