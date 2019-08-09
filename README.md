@@ -19,7 +19,7 @@ How do I use it?
 ##### Dependencies
 ```groovy
 dependencies {
-    implementation 'jp.wasabeef:takt:1.0.5'
+  implementation 'jp.wasabeef:takt:2.0.0'
 }
 ```
 
@@ -29,10 +29,10 @@ dependencies {
 There is a simple initialization step which occurs in your Application class:  
 **Simple**
 ```java
-public class MyApplication extends Application {
-  public void onCreate() {
-    super.onCreate();
-    Takt.stock(this);
+class MyApplication : Application() {
+  override fun onCreate() {
+    super.onCreate()
+    Takt.stock(this)
   }
 }
 ```
@@ -48,60 +48,52 @@ public class MyApplication extends Application {
 - `useCustomControl` to manually start/stop Takt (disabled by default)
 - `showOverlaySetting` to enable/disable showing system overlay setting (enabled by default)
 
-```java
+```kotlin
 Takt.stock(this)
-    .seat(Seat.BOTTOM_RIGHT)
-    .interval(250)
-    .color(Color.WHITE)
-    .size(14f)
-    .alpha(.5f)
-    .listener(new Audience() {
-      @Override public void heartbeat(double fps) {
-        Log.d("Excellent!", fps + " fps");
+  .seat(Seat.BOTTOM_RIGHT)
+  .interval(250)
+  .color(Color.WHITE)
+  .size(14f)
+  .alpha(.5f)
+  .listener { fps ->
+    Log.d("Excellent!", fps.toString() + " fps")
 
-        // Logcat
-        // jp.wasabeef.example.takt D/Excellent!﹕ 59.28853754940712 fps
-        // jp.wasabeef.example.takt D/Excellent!﹕ 59.523809523809526 fps
-        // jp.wasabeef.example.takt D/Excellent!﹕ 59.05511811023622 fps
-        // jp.wasabeef.example.takt D/Excellent!﹕ 55.33596837944664 fps
-        // jp.wasabeef.example.takt D/Excellent!﹕ 59.523809523809526 fps
-      }
-    });
-}
+    // Logcat
+    // jp.wasabeef.example.takt D/Excellent!﹕ 59.28853754940712 fps
+    // jp.wasabeef.example.takt D/Excellent!﹕ 59.523809523809526 fps
+    // jp.wasabeef.example.takt D/Excellent!﹕ 59.05511811023622 fps
+    // jp.wasabeef.example.takt D/Excellent!﹕ 55.33596837944664 fps
+    // jp.wasabeef.example.takt D/Excellent!﹕ 59.523809523809526 fps
+  }
 ```
 
 **Position**
 
 ```java
 Takt.stock(this)
-    .seat(Seat.RIGHT_CENTER);
+  .seat(Seat.RIGHT_CENTER)
 
-    /**
-     * TOP_RIGHT,
-     * TOP_LEFT,
-     * TOP_CENTER,
-     *
-     * CENTER,
-     * RIGHT_CENTER,
-     * LEFT_CENTER,
-     *
-     * BOTTOM_RIGHT,
-     * BOTTOM_LEFT,
-     * BOTTOM_CENTER
-     */
-
+  /**
+   * TOP_RIGHT,
+   * TOP_LEFT,
+   * TOP_CENTER,
+   *
+   * CENTER,
+   * RIGHT_CENTER,
+   * LEFT_CENTER,
+   *
+   * BOTTOM_RIGHT,
+   * BOTTOM_LEFT,
+   * BOTTOM_CENTER
+   */
 ```
 
 **Hide fps label**
 
 ```java
 Takt.stock(this)
-    .hide()
-    .listener(new Audience() {
-      @Override public void heartbeat(double fps) {
-        Log.d("Excellent!", fps + " fps");
-      }
-    });
+  .hide()
+  .listener { fps -> Log.d("Excellent!", fps.toString() + " fps") }
 ```
 
 Requirements
@@ -120,7 +112,7 @@ src="https://raw.githubusercontent.com/wasabeef/art/master/twitter.png" width="7
 License
 -------
 
-    Copyright 2017 Wasabeef
+    Copyright 2018 Wasabeef
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
