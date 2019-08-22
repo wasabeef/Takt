@@ -136,7 +136,7 @@ public class Takt  {
     public void stop() {
       metronome.stop();
 
-      if (show && stageView != null) {
+      if (show && isPlaying) {
         wm.removeView(stageView);
         isPlaying = false;
       }
