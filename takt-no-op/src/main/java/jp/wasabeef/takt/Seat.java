@@ -31,7 +31,7 @@ public enum Seat {
   BOTTOM_LEFT(Gravity.BOTTOM | Gravity.START),
   BOTTOM_CENTER(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
 
-  private int gravity;
+  private final int gravity;
 
   Seat(int gravity) {
     this.gravity = gravity;

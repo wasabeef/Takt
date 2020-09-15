@@ -24,12 +24,12 @@ import java.util.concurrent.TimeUnit;
 
 class Metronome implements Choreographer.FrameCallback {
 
-  private Choreographer choreographer;
+  private final Choreographer choreographer;
 
   private long frameStartTime = 0;
   private int framesRendered = 0;
 
-  private List<Audience> listeners = new ArrayList<>();
+  private final List<Audience> listeners = new ArrayList<>();
   private int interval = 500;
 
   public Metronome() {

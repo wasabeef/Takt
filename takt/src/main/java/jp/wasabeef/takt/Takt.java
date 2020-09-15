@@ -89,17 +89,14 @@ public class Takt {
       params.x = 10;
 
       app = application;
-      wm = WindowManager.class.cast(application.getSystemService(Context.WINDOW_SERVICE));
+      wm = (WindowManager) application.getSystemService(Context.WINDOW_SERVICE);
       LayoutInflater inflater = LayoutInflater.from(app);
       stageView = inflater.inflate(R.layout.stage, new RelativeLayout(app));
       fpsText = stageView.findViewById(R.id.takt_fps);
 
-      listener(new Audience() {
-        @Override
-        public void heartbeat(double fps) {
-          if (fpsText != null) {
-            fpsText.setText(decimal.format(fps));
-          }
+      listener(fps -> {
+        if (fpsText != null) {
+          fpsText.setText(decimal.format(fps));
         }
       });
 
