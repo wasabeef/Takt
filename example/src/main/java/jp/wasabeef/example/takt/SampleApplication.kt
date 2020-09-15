@@ -7,7 +7,7 @@ import jp.wasabeef.takt.Seat
 import jp.wasabeef.takt.Takt
 
 /**
- * Copyright (C) 2019 Wasabeef
+ * Copyright (C) 2020 Wasabeef
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
