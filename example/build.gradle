@@ -31,5 +31,5 @@ dependencies {
   implementation project(':takt')
   /*implementation project(':takt-no-op')*/
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-  implementation "androidx.appcompat:appcompat:1.1.0"
+  implementation "androidx.appcompat:appcompat:1.2.0"
 }
