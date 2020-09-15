@@ -9,31 +9,40 @@ import android.os.Bundle;
  */
 public class LifecycleListener implements Application.ActivityLifecycleCallbacks {
 
-    public LifecycleListener(LifecycleCallbackListener listener) { }
+  public LifecycleListener(LifecycleCallbackListener listener) {
+  }
 
-    public interface LifecycleCallbackListener {
-        void onAppForeground();
-        void onAppBackground();
-    }
+  public interface LifecycleCallbackListener {
+    void onAppForeground();
 
-    @Override
-    public void onActivityStarted(Activity activity) {}
+    void onAppBackground();
+  }
 
-    @Override
-    public void onActivityStopped(Activity activity) {}
+  @Override
+  public void onActivityStarted(Activity activity) {
+  }
 
-    @Override
-    public void onActivityCreated(Activity activity, Bundle savedInstanceState) {}
+  @Override
+  public void onActivityStopped(Activity activity) {
+  }
 
-    @Override
-    public void onActivityResumed(Activity activity) {}
+  @Override
+  public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
+  }
 
-    @Override
-    public void onActivityPaused(Activity activity) {}
+  @Override
+  public void onActivityResumed(Activity activity) {
+  }
 
-    @Override
-    public void onActivitySaveInstanceState(Activity activity, Bundle outState) {}
+  @Override
+  public void onActivityPaused(Activity activity) {
+  }
 
-    @Override
-    public void onActivityDestroyed(Activity activity) {}
+  @Override
+  public void onActivitySaveInstanceState(Activity activity, Bundle outState) {
+  }
+
+  @Override
+  public void onActivityDestroyed(Activity activity) {
+  }
 }

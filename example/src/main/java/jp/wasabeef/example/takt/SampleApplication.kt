@@ -27,12 +27,12 @@ class SampleApplication : Application() {
   override fun onCreate() {
     super.onCreate()
     Takt.stock(this)
-        .seat(Seat.TOP_RIGHT)
-        .interval(250)
-        .color(Color.WHITE)
-        .size(24f)
-        .alpha(.5f)
-        .listener { fps -> Log.d("Excellent!", fps.toString() + " fps") }
-        .useCustomControl()
+      .seat(Seat.TOP_RIGHT)
+      .interval(250)
+      .color(Color.WHITE)
+      .size(24f)
+      .alpha(.5f)
+      .listener { fps -> Log.d("Excellent!", fps.toString() + " fps") }
+      .useCustomControl()
   }
 }
