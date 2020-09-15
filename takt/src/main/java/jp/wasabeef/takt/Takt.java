@@ -189,7 +189,7 @@ public class Takt {
     }
 
     private boolean isOverlayApiDeprecated() {
-      return Build.VERSION.SDK_INT >= 26 /* FIXME: Android8.0 */;
+      return Build.VERSION.SDK_INT >= 26;
     }
 
     private boolean hasOverlayPermission() {
