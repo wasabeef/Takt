@@ -3,7 +3,7 @@ package jp.wasabeef.takt;
 import android.app.Application;
 
 /**
- * Copyright (C) 2019 Wasabeef
+ * Copyright (C) 2020 Wasabeef
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,77 +20,77 @@ import android.app.Application;
 
 public class Takt {
 
-    private final static Program program = new Program();
+  private final static Program program = new Program();
 
-    private Takt() {
+  private Takt() {
+  }
+
+  public static Program stock(Application application) {
+    return program.prepare(application);
+  }
+
+  public static void play() {
+  }
+
+  public static void finish() {
+  }
+
+  public static class Program implements LifecycleListener.LifecycleCallbackListener {
+    public Program() {
     }
 
-    public static Program stock(Application application) {
-        return program.prepare(application);
+    private Program prepare(Application application) {
+      return this;
     }
 
-    public static void play() {
+    @Override
+    public void onAppForeground() {
     }
 
-    public static void finish() {
+    @Override
+    public void onAppBackground() {
     }
 
-    public static class Program implements LifecycleListener.LifecycleCallbackListener {
-        public Program() {
-        }
-
-        private Program prepare(Application application) {
-            return this;
-        }
-
-        @Override
-        public void onAppForeground() {
-        }
-
-        @Override
-        public void onAppBackground() {
-        }
-
-        public void play() {
-        }
-
-        public void stop() {
-        }
-
-        public Program color(int color) {
-            return this;
-        }
-
-        public Program size(float size) {
-            return this;
-        }
-
-        public Program useCustomControl() {
-            return this;
-        }
-
-        public Program alpha(float alpha) {
-            return this;
-        }
-
-        public Program interval(int ms) {
-            return this;
-        }
-
-        public Program listener(Audience audience) {
-            return this;
-        }
-
-        public Program hide() {
-            return this;
-        }
-
-        public Program seat(Seat seat) {
-            return this;
-        }
-
-        public Program showOverlaySetting(boolean enable) {
-            return this;
-        }
+    public void play() {
     }
+
+    public void stop() {
+    }
+
+    public Program color(int color) {
+      return this;
+    }
+
+    public Program size(float size) {
+      return this;
+    }
+
+    public Program useCustomControl() {
+      return this;
+    }
+
+    public Program alpha(float alpha) {
+      return this;
+    }
+
+    public Program interval(int ms) {
+      return this;
+    }
+
+    public Program listener(Audience audience) {
+      return this;
+    }
+
+    public Program hide() {
+      return this;
+    }
+
+    public Program seat(Seat seat) {
+      return this;
+    }
+
+    public Program showOverlaySetting(boolean enable) {
+      return this;
+    }
+  }
 }

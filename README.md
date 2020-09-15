@@ -19,7 +19,8 @@ How do I use it?
 ##### Dependencies
 ```groovy
 dependencies {
-  implementation 'jp.wasabeef:takt:2.0.1'
+  releaseImplementation 'jp.wasabeef:takt-no-op:2.x.x'
+  debugImplementation 'jp.wasabeef:takt:2.x.x'
 }
 ```
 
@@ -112,7 +113,7 @@ src="https://raw.githubusercontent.com/wasabeef/art/master/twitter.png" width="7
 License
 -------
 
-    Copyright 2018 Wasabeef
+    Copyright (C) 2020 Wasabeef
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.

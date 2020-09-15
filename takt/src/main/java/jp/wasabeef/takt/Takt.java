@@ -18,14 +18,14 @@ import android.widget.TextView;
 import java.text.DecimalFormat;
 
 /**
- * Copyright (C) 2019 Wasabeef
- *
+ * Copyright (C) 2020 Wasabeef
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * <p>
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -33,7 +33,7 @@ import java.text.DecimalFormat;
  * limitations under the License.
  */
 
-public class Takt  {
+public class Takt {
 
   private final static Program program = new Program();
 
@@ -83,22 +83,20 @@ public class Takt  {
         params.type = LayoutParams.TYPE_TOAST;
       }
       params.flags = LayoutParams.FLAG_KEEP_SCREEN_ON | LayoutParams.FLAG_NOT_FOCUSABLE
-          | LayoutParams.FLAG_NOT_TOUCH_MODAL | LayoutParams.FLAG_NOT_TOUCHABLE;
+        | LayoutParams.FLAG_NOT_TOUCH_MODAL | LayoutParams.FLAG_NOT_TOUCHABLE;
       params.format = PixelFormat.TRANSLUCENT;
       params.gravity = Seat.BOTTOM_RIGHT.getGravity();
       params.x = 10;
 
       app = application;
-      wm = WindowManager.class.cast(application.getSystemService(Context.WINDOW_SERVICE));
+      wm = (WindowManager) application.getSystemService(Context.WINDOW_SERVICE);
       LayoutInflater inflater = LayoutInflater.from(app);
       stageView = inflater.inflate(R.layout.stage, new RelativeLayout(app));
       fpsText = stageView.findViewById(R.id.takt_fps);
 
-      listener(new Audience() {
-        @Override public void heartbeat(double fps) {
-          if (fpsText != null) {
-            fpsText.setText(decimal.format(fps));
-          }
+      listener(fps -> {
+        if (fpsText != null) {
+          fpsText.setText(decimal.format(fps));
         }
       });
 
@@ -191,7 +189,7 @@ public class Takt  {
     }
 
     private boolean isOverlayApiDeprecated() {
-      return Build.VERSION.SDK_INT >= 26 /* FIXME: Android8.0 */;
+      return Build.VERSION.SDK_INT >= 26;
     }
 
     private boolean hasOverlayPermission() {
@@ -201,7 +199,7 @@ public class Takt  {
     private void startOverlaySettingActivity() {
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
         app.startActivity(new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
-            Uri.parse("package:" + app.getPackageName())).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+          Uri.parse("package:" + app.getPackageName())).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
       }
     }
   }

@@ -1,19 +1,20 @@
 package jp.wasabeef.takt;
 
 import android.view.Choreographer;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Copyright (C) 2019 Wasabeef
- *
+ * Copyright (C) 2020 Wasabeef
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * <p>
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -23,12 +24,12 @@ import java.util.concurrent.TimeUnit;
 
 class Metronome implements Choreographer.FrameCallback {
 
-  private Choreographer choreographer;
+  private final Choreographer choreographer;
 
   private long frameStartTime = 0;
   private int framesRendered = 0;
 
-  private List<Audience> listeners = new ArrayList<>();
+  private final List<Audience> listeners = new ArrayList<>();
   private int interval = 500;
 
   public Metronome() {
@@ -53,7 +54,8 @@ class Metronome implements Choreographer.FrameCallback {
     this.interval = interval;
   }
 
-  @Override public void doFrame(long frameTimeNanos) {
+  @Override
+  public void doFrame(long frameTimeNanos) {
     long currentTimeMillis = TimeUnit.NANOSECONDS.toMillis(frameTimeNanos);
 
     if (frameStartTime > 0) {

@@ -8,14 +8,20 @@ android {
   defaultConfig {
     minSdkVersion MIN_SDK_VERSION as int
     targetSdkVersion TARGET_SDK_VERSION as int
-    versionCode "git rev-list origin/master --count".execute().text.toInteger()
+    versionCode VERSION_CODE as int
     versionName VERSION_NAME
   }
+
+
+  // SigningConfigs
+  apply from: '../signingConfigs/debug.gradle', to: android
+  apply from: '../signingConfigs/release.gradle', to: android
 
   buildTypes {
     debug {
       debuggable true
       zipAlignEnabled true
+      signingConfig signingConfigs.debug
     }
     release {
       debuggable false
@@ -23,13 +29,16 @@ android {
       minifyEnabled true
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
       shrinkResources true
+      signingConfig signingConfigs.release
     }
   }
 }
 
 dependencies {
-  implementation project(':takt')
-  /*implementation project(':takt-no-op')*/
+  debugImplementation project(':takt')
+  releaseImplementation project(':takt-no-op')
+//  debugImplementation 'jp.wasabeef:takt:2.1.0'
+//  releaseImplementation 'jp.wasabeef:takt-no-op:2.1.0'
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-  implementation "androidx.appcompat:appcompat:1.1.0"
+  implementation "androidx.appcompat:appcompat:1.2.0"
 }
