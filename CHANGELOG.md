@@ -1,6 +1,16 @@
 Change Log
 ==========
 
+Version 2.1.0 *(2020-09-15)*
+----------------------------
+
+Update:
+- Kotlin 1.3.41 -> 1.3.72
+- Compile & Target SDK Version 28 -> 30
+
+Feature:
+- [#20](https://github.com/wasabeef/Takt/pull/20) Added No-op artifact by [beigirad](https://github.com/beigirad)
+
 Version 2.0.1 *(2019-08-09)*
 ----------------------------
 

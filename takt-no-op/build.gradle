@@ -11,11 +11,11 @@ android {
 
 ext {
   bintrayRepo = 'maven'
-  bintrayName = 'takt'
+  bintrayName = 'takt-no-op'
   bintrayUserOrg = 'wasabeef'
   publishedGroupId = 'jp.wasabeef'
   libraryName = 'takt'
-  artifact = 'takt'
+  artifact = 'takt-no-op'
   libraryDescription = 'Android libraries for measuring the FPS'
   siteUrl = 'https://github.com/wasabeef/Takt'
   gitUrl = 'https://github.com/wasabeef/Takt.git'

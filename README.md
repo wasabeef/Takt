@@ -19,7 +19,8 @@ How do I use it?
 ##### Dependencies
 ```groovy
 dependencies {
-  implementation 'jp.wasabeef:takt:2.0.1'
+  releaseImplementation 'jp.wasabeef:takt-no-op:2.x.x'
+  debugImplementation 'jp.wasabeef:takt:2.x.x'
 }
 ```
 

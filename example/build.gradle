@@ -35,8 +35,10 @@ android {
 }
 
 dependencies {
-  implementation project(':takt')
-  /*implementation project(':takt-no-op')*/
+  debugImplementation project(':takt')
+  releaseImplementation project(':takt-no-op')
+//  debugImplementation 'jp.wasabeef:takt:2.1.0'
+//  releaseImplementation 'jp.wasabeef:takt-no-op:2.1.0'
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
   implementation "androidx.appcompat:appcompat:1.2.0"
 }
