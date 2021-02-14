@@ -18,6 +18,10 @@ How do I use it?
 
 ##### Dependencies
 ```groovy
+repositories {
+  mavenCentral()
+}
+
 dependencies {
   releaseImplementation 'jp.wasabeef:takt-no-op:2.1.0'
   debugImplementation 'jp.wasabeef:takt:2.1.0'
