@@ -12,7 +12,6 @@ android {
     versionName VERSION_NAME
   }
 
-
   // SigningConfigs
   apply from: '../signingConfigs/debug.gradle', to: android
   apply from: '../signingConfigs/release.gradle', to: android
@@ -32,6 +31,10 @@ android {
       signingConfig signingConfigs.release
     }
   }
+}
+
+repositories {
+//     maven { url = "https://oss.sonatype.org/content/repositories/snapshots"}
 }
 
 dependencies {
