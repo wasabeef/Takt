@@ -1,6 +1,6 @@
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-takt-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/2468)
 [![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
-[ ![Download](https://api.bintray.com/packages/wasabeef/maven/takt/images/download.svg) ](https://bintray.com/wasabeef/maven/takt/_latestVersion)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/jp.wasabeef/takt/badge.svg)](https://search.maven.org/artifact/jp.wasabeef/takt)
 
 `Takt` is `Android` library for measuring the `FPS` using [`Choreographer`](http://developer.android.com/intl/ja/reference/android/view/Choreographer.html).  
 
@@ -19,8 +19,8 @@ How do I use it?
 ##### Dependencies
 ```groovy
 dependencies {
-  releaseImplementation 'jp.wasabeef:takt-no-op:2.x.x'
-  debugImplementation 'jp.wasabeef:takt:2.x.x'
+  releaseImplementation 'jp.wasabeef:takt-no-op:2.1.0'
+  debugImplementation 'jp.wasabeef:takt:2.1.0'
 }
 ```
 
