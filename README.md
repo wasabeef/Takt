@@ -23,8 +23,8 @@ repositories {
 }
 
 dependencies {
-  releaseImplementation 'jp.wasabeef:takt-no-op:2.1.0'
-  debugImplementation 'jp.wasabeef:takt:2.1.0'
+  releaseImplementation 'jp.wasabeef:takt-no-op:2.1.1'
+  debugImplementation 'jp.wasabeef:takt:2.1.1'
 }
 ```
 
